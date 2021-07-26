@@ -1,0 +1,9 @@
+[X] update github profiles with a picture
+[X] add group members to data.js
+[X] add JQ (handshake)
+[ ] append divs for each in data.js
+    [ ] each contain image from github profile
+[ ] start game prompt
+[ ] use random number to assign correct image
+[ ] alert for correct image
+[ ] alert for incorrect image
