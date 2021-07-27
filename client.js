@@ -8,7 +8,7 @@ function onReady() {
     console.log('We are ready');
     for (let i = 0; i < people.length; i++) {
         $('body').append(`
-            <div>
+            <div class="images">
                 <img data-index="${i}" src="https://github.com/${people[i].githubUsername}.png?size=250" alt="Profile image of Chris">
             </div>
         `)
@@ -19,7 +19,7 @@ function onReady() {
     $('#randomName').append(targetPerson);
     // add in listeners
     $('img').on('click', onClick)
-
+    $('.images').css('display', 'inline-block');
 }
 
 function randomNumber(min, max){
@@ -27,9 +27,13 @@ function randomNumber(min, max){
 }
 
 function onClick() {
-    console.log('we are in onClick')
-    let name = $(this).data('index');
+    let name = people[$(this).data('index')].name;
     if (name === targetPerson) {
-        console.log('hi')
-    } 
+        alert('You guessed correctly! Guess another person!')
+        targetPerson = people[randomNumber(0,people.length-1)].name;
+        $('#randomName').empty();
+        $('#randomName').append(targetPerson);
+    } else {
+        alert('Incorrect, try again!')
+    }
 }
