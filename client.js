@@ -18,8 +18,9 @@ function onReady() {
     // add to randomName tag
     $('#randomName').append(targetPerson);
     // add in listeners
-    $('img').on('click', onClick)
+    $(document).on('click', 'img', onClick)
     $('.images').css('display', 'inline-block');
+
 }
 
 function randomNumber(min, max){
@@ -36,4 +37,33 @@ function onClick() {
     } else {
         alert('Incorrect, try again!')
     }
-}
+    randomizeDisplay();
+};
+
+function randomizeDisplay() {
+    // let displayed = [];
+    // let counter = people.length;
+    // while (counter > 0)
+    // do stuff
+    //if randomNumber is repeat:
+    //    do not adjust counter
+    // otherwise, 
+    //      adjust the counter
+
+    $('.images').empty();
+
+    for (let i = 0; i < people.length; i++) {
+
+        let randomNum = randomNumber(0,people.length-1);
+        // if (displayed.includes(randomNumber)) {
+        //     break;
+        // } else {
+        //     displayed.push(randomNumber);
+        // }
+        $('body').append(`
+            <div class="images">
+                <img data-index="${randomNum}" src="https://github.com/${people[randomNum].githubUsername}.png?size=250" alt="Profile image of Chris">
+            </div>
+        `)
+    };
+};
